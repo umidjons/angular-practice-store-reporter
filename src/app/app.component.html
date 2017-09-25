@@ -14,4 +14,12 @@
       <app-summary-card [storeSummary]="salesSum"></app-summary-card>
     </div>
   </div>
+
+  <h3 class="mt-4">Top Selling Products</h3>
+
+  <div class="row">
+    <div class="col-3 pb-4" *ngFor="let product of topSellingProducts">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
 </div>

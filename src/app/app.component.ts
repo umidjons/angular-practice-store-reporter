@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreSummary } from './store-summary';
 import { StoreService } from './store.service';
+import { Product } from './product';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   newCustomersCount: StoreSummary;
   activeUsersCount: StoreSummary;
   salesSum: StoreSummary;
+  topSellingProducts: Product[];
 
   constructor(private storeService: StoreService) { }
 
@@ -27,9 +29,14 @@ export class AppComponent implements OnInit {
     this.storeService.getSalesSum().then(count => this.salesSum = count);
   }
 
+  getTopSellingProducts(): void {
+    this.storeService.getTopSellingProducts().then(products => this.topSellingProducts = products);
+  }
+
   ngOnInit(): void {
     this.getNewCustomersCount();
     this.getActiveUsersCount();
     this.getSalesSum();
+    this.getTopSellingProducts();
   }
 }
